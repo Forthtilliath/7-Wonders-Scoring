@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Scores 7 Wonders</string>
+    <string name="title_home">C\'est la page d\'acceuil !</string>
+    <string name="title_players">Liste des joueurs</string>
+    <string name="title_scores">Liste des scores</string>
+    <string name="title_newgame">Démarrage nouvelle partie</string>
+    <string name="text_home">C\'est la page d\'acceuil !</string>
+    <string name="text_players">Liste des joueurs</string>
+    <string name="text_scores">Liste des scores</string>
+    <string name="text_newgame">Démarrage nouvelle partie</string>
+    <string name="title_bt_home">Accueil</string>
+    <string name="title_bt_players">Joueurs</string>
+    <string name="title_bt_scores">Scores</string>
+    <string name="title_bt_newgame">Nouvelle partie</string>
+</resources>
