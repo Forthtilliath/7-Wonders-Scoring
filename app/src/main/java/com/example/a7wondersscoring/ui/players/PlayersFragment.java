@@ -1,34 +1,26 @@
 package com.example.a7wondersscoring.ui.players;
 
-        import android.annotation.SuppressLint;
-        import android.content.res.Resources;
-        import android.graphics.Typeface;
-        import android.os.Build;
-        import android.os.Bundle;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.LinearLayout;
-        import android.widget.TextView;
+import android.annotation.SuppressLint;
+import android.content.res.Resources;
+import android.graphics.Typeface;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-        import androidx.annotation.ColorInt;
-        import androidx.annotation.NonNull;
-        import androidx.annotation.Nullable;
-        import androidx.annotation.RequiresApi;
-        import androidx.constraintlayout.widget.ConstraintLayout;
-        import androidx.constraintlayout.widget.ConstraintSet;
-        import androidx.fragment.app.Fragment;
-        import androidx.lifecycle.Observer;
-        import androidx.lifecycle.ViewModelProvider;
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
-        import com.example.a7wondersscoring.R;
+import com.example.a7wondersscoring.R;
 
-        import org.w3c.dom.Text;
+import java.util.Arrays;
+import java.util.List;
 
-        import java.util.Arrays;
-        import java.util.List;
-
-        import static com.example.a7wondersscoring.R.color.black;
+import static com.example.a7wondersscoring.R.color.black;
 
 public class PlayersFragment extends Fragment {
 
@@ -37,6 +29,7 @@ public class PlayersFragment extends Fragment {
             "Michel", "Chieuse", "Piplette", "Raleuse", "Emmerdeuse", "Jalouse", "Poufiasse",
             "Idiote", "Faignasse", "Glandeuse", "Pétasse");
 
+    // TODO: Faire ca automatiquement
     private List<Integer> textIdPlayers = Arrays.asList(R.id.text_player_0, R.id.text_player_1, R.id.text_player_2, R.id.text_player_3, R.id.text_player_4, R.id.text_player_5, R.id.text_player_6, R.id.text_player_7, R.id.text_player_8, R.id.text_player_9, R.id.text_player_10, R.id.text_player_11, R.id.text_player_12, R.id.text_player_13, R.id.text_player_14, R.id.text_player_15, R.id.text_player_16, R.id.text_player_17, R.id.text_player_18, R.id.text_player_19, R.id.text_player_20, R.id.text_player_21, R.id.text_player_22, R.id.text_player_23, R.id.text_player_24, R.id.text_player_25);
 
     private int dpToPx(int dp) { return (int) (dp * Resources.getSystem().getDisplayMetrics().density); }
