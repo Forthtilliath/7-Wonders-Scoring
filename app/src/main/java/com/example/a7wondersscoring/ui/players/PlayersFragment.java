@@ -37,36 +37,10 @@ public class PlayersFragment extends Fragment {
             "Michel", "Chieuse", "Piplette", "Raleuse", "Emmerdeuse", "Jalouse", "Poufiasse",
             "Idiote", "Faignasse", "Glandeuse", "Pétasse");
 
-    private List<Integer> textIdPlayers = Arrays.asList(R.id.text_player_0,
-            R.id.text_player_1,
-            R.id.text_player_2,
-            R.id.text_player_3,
-            R.id.text_player_4,
-            R.id.text_player_5,
-            R.id.text_player_6,
-            R.id.text_player_7,
-            R.id.text_player_8,
-            R.id.text_player_9,
-            R.id.text_player_10,
-            R.id.text_player_11,
-            R.id.text_player_12,
-            R.id.text_player_13,
-            R.id.text_player_14,
-            R.id.text_player_15,
-            R.id.text_player_16,
-            R.id.text_player_17,
-            R.id.text_player_18,
-            R.id.text_player_19,
-            R.id.text_player_20,
-            R.id.text_player_21,
-            R.id.text_player_22,
-            R.id.text_player_23,
-            R.id.text_player_24,
-            R.id.text_player_25);
+    private List<Integer> textIdPlayers = Arrays.asList(R.id.text_player_0, R.id.text_player_1, R.id.text_player_2, R.id.text_player_3, R.id.text_player_4, R.id.text_player_5, R.id.text_player_6, R.id.text_player_7, R.id.text_player_8, R.id.text_player_9, R.id.text_player_10, R.id.text_player_11, R.id.text_player_12, R.id.text_player_13, R.id.text_player_14, R.id.text_player_15, R.id.text_player_16, R.id.text_player_17, R.id.text_player_18, R.id.text_player_19, R.id.text_player_20, R.id.text_player_21, R.id.text_player_22, R.id.text_player_23, R.id.text_player_24, R.id.text_player_25);
 
-    public static int dpToPx(int dp) { return (int) (dp * Resources.getSystem().getDisplayMetrics().density); }
-
-    public static int pxToDp(int px) { return (int) (px / Resources.getSystem().getDisplayMetrics().density); }
+    private int dpToPx(int dp) { return (int) (dp * Resources.getSystem().getDisplayMetrics().density); }
+    private int pxToDp(int px) { return (int) (px / Resources.getSystem().getDisplayMetrics().density); }
 
     @SuppressLint("ResourceAsColor")
     @RequiresApi(api = Build.VERSION_CODES.Q)
@@ -79,16 +53,22 @@ public class PlayersFragment extends Fragment {
         // On ajoute un élément vide à la fin le temps de savoir pourquoi le dernier
         // élément ne veut pas s'afficher
         lPlayers.add("");
+
+        // Pour chaque joueur
         for( int i = 0 ; i < lPlayers.size() ; i++) {
+            // On récupère le champ
             TextView textViewPlayer = root.findViewById(textIdPlayers.get(i));
 
+            // On le met en visible et on ajoute le nom du joueur dedans
             textViewPlayer.setVisibility(View.VISIBLE);
             textViewPlayer.setText(lPlayers.get(i));
 
+            // Fond alterné
             if(i%2 == 0)
                 textViewPlayer.setBackgroundResource(R.color.purple_200);
             else
                 textViewPlayer.setBackgroundResource(R.color.teal_200);
+
 
             textViewPlayer.setPadding(25,25,25,25);
             textViewPlayer.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
