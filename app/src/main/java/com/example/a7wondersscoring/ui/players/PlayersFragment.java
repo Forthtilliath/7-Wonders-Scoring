@@ -69,13 +69,14 @@ public class PlayersFragment extends Fragment {
             else
                 textViewPlayer.setBackgroundResource(R.color.teal_200);
 
-
+            // Ajout padding, alignement, bold, color
             textViewPlayer.setPadding(25,25,25,25);
             textViewPlayer.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             textViewPlayer.setTypeface(Typeface.DEFAULT_BOLD);
             textViewPlayer.setTextAppearance(R.style.TextAppearance_AppCompat_Large);
             textViewPlayer.setTextColor(black);
 
+            // Margin & Taille
             ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) textViewPlayer.getLayoutParams();
             //params.height = dpToPx(50);
             params.setMargins(8,16,8,8);
