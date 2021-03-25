@@ -22,18 +22,40 @@ import java.util.List;
 
 import static com.example.a7wondersscoring.R.color.black;
 
+/**
+ * [ ] Ajouter un bouton pour ajouter un nouveau joueur
+ * [ ] Avoir un fichier de configuration pour enregistrer la liste des joueurs
+ * [ ] Charger automatiquement la liste des joueurs
+ */
+
 public class PlayersFragment extends Fragment {
 
     private PlayersViewModel playersViewModel;
-    private List<String> lPlayers = Arrays.asList("Isabelle", "Noémie", "Vincent", "Jacquie",
-            "Michel", "Chieuse", "Piplette", "Raleuse", "Emmerdeuse", "Jalouse", "Poufiasse",
-            "Idiote", "Faignasse", "Glandeuse", "Pétasse");
+    private List<String> lPlayers = loadPlayers();
 
     // TODO: Faire ca automatiquement
-    private List<Integer> textIdPlayers = Arrays.asList(R.id.text_player_0, R.id.text_player_1, R.id.text_player_2, R.id.text_player_3, R.id.text_player_4, R.id.text_player_5, R.id.text_player_6, R.id.text_player_7, R.id.text_player_8, R.id.text_player_9, R.id.text_player_10, R.id.text_player_11, R.id.text_player_12, R.id.text_player_13, R.id.text_player_14, R.id.text_player_15, R.id.text_player_16, R.id.text_player_17, R.id.text_player_18, R.id.text_player_19, R.id.text_player_20, R.id.text_player_21, R.id.text_player_22, R.id.text_player_23, R.id.text_player_24, R.id.text_player_25);
+    private List<Integer> textIdPlayers = Arrays.asList(R.id.text_player_0, R.id.text_player_1,
+            R.id.text_player_2, R.id.text_player_3, R.id.text_player_4, R.id.text_player_5,
+            R.id.text_player_6, R.id.text_player_7, R.id.text_player_8, R.id.text_player_9,
+            R.id.text_player_10, R.id.text_player_11, R.id.text_player_12, R.id.text_player_13,
+            R.id.text_player_14, R.id.text_player_15, R.id.text_player_16, R.id.text_player_17,
+            R.id.text_player_18, R.id.text_player_19, R.id.text_player_20, R.id.text_player_21,
+            R.id.text_player_22, R.id.text_player_23, R.id.text_player_24, R.id.text_player_25);
 
-    private int dpToPx(int dp) { return (int) (dp * Resources.getSystem().getDisplayMetrics().density); }
-    private int pxToDp(int px) { return (int) (px / Resources.getSystem().getDisplayMetrics().density); }
+    private List<String> loadPlayers() {
+        //return Arrays.asList("Isabelle", "Noémie", "Vincent");
+        return Arrays.asList("Isabelle", "Noémie", "Vincent", "Jacquie",
+                "Michel", "Chieuse", "Piplette", "Raleuse", "Emmerdeuse", "Jalouse", "Poufiasse",
+                "Idiote", "Faignasse", "Glandeuse", "Pétasse");
+    }
+
+    private int dpToPx(int dp) {
+        return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
+    }
+
+    private int pxToDp(int px) {
+        return (int) (px / Resources.getSystem().getDisplayMetrics().density);
+    }
 
     @SuppressLint("ResourceAsColor")
     @RequiresApi(api = Build.VERSION_CODES.Q)
@@ -43,18 +65,14 @@ public class PlayersFragment extends Fragment {
         playersViewModel = new ViewModelProvider(this).get(PlayersViewModel.class);
         View root = inflater.inflate(R.layout.fragment_players, container, false);
 
-        // On ajoute un élément vide à la fin le temps de savoir pourquoi le dernier
-        // élément ne veut pas s'afficher
-        lPlayers.add("");
-
         // Pour chaque joueur
-        for( int i = 0 ; i < lPlayers.size() ; i++) {
+        for(int i = 0; i < lPlayers.size() ; i++) {
             // On récupère le champ
             TextView textViewPlayer = root.findViewById(textIdPlayers.get(i));
 
             // On le met en visible et on ajoute le nom du joueur dedans
             textViewPlayer.setVisibility(View.VISIBLE);
-            textViewPlayer.setText(lPlayers.get(i));
+            textViewPlayer.setText(i + " - " + lPlayers.get(i));
 
             // Fond alterné
             if(i%2 == 0)
