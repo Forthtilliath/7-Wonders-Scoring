@@ -7,9 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.a7wondersscoring.R;
@@ -24,13 +22,16 @@ public class HomeFragment extends Fragment {
                 new ViewModelProvider(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         final TextView textView = root.findViewById(R.id.text_home);
-        System.out.println(textView.getText());
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+        // On retire pour ne pas remplacer le texte par défaut
+        System.out.println(getString(R.string.text_home_0));
+        /*homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(textView.getText() + "\n" + s);
+                //textView.setText(s);
+                textView.setText(getString(R.string.text_home));
             }
-        });
+        });*/
         return root;
     }
 }

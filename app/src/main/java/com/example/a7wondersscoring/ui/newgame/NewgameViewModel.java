@@ -6,16 +6,11 @@ import androidx.lifecycle.ViewModel;
 
 public class NewgameViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
+    private final MutableLiveData<String> mText;
 
     public NewgameViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is newgame fragment");
-    }
-
-    public NewgameViewModel(String text) {
-        mText = new MutableLiveData<>();
-        mText.setValue(text);
     }
 
     public LiveData<String> getText() {

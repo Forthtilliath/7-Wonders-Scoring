@@ -1,8 +1,8 @@
 package com.example.a7wondersscoring;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -10,12 +10,26 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class MainActivity extends AppCompatActivity {
+
+    @SuppressLint("StaticFieldLeak")
+    private static Context context;
+
+    // Permet de récupérer le context via d'autres classes
+    public static Context getContext() {
+        return context;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // On enregistre le context
+        context = getApplicationContext();
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
