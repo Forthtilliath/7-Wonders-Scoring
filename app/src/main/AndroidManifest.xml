@@ -3,12 +3,12 @@
     package="com.example.a7wondersscoring">
 
     <application
-        android:icon="@mipmap/ic_launcher"
+        android:fullBackupContent="true"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@mipmap/ic_launcher_7w"
         android:supportsRtl="true"
         android:allowBackup="true"
-        android:fullBackupContent="@xml/backup_descriptor"
+        android:roundIcon="@mipmap/ic_launcher_7w_round"
         android:theme="@style/Forth.Theme.7WondersScoring">
         <activity
             android:name=".MainActivity"

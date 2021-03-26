@@ -16,4 +16,5 @@
     <string name="text_home_1">Image</string>
     <string name="text_new_player">Ajouter un nouveau joueur</string>
     <string name="text_home_2">Score 7 Wonders va vous aider à calculer les scores de chaque partie et vous permettre de les enregistrer !</string>
+    <string name="donate">Faire un don</string>
 </resources>

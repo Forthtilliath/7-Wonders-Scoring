@@ -21,10 +21,10 @@ public class HomeFragment extends Fragment {
         homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
+        final TextView textView = root.findViewById(R.id.text_home_2);
 
         // On retire pour ne pas remplacer le texte par défaut
-        System.out.println(getString(R.string.text_home_0));
+        //System.out.println(getString(R.string.text_home_0));
         /*homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -32,6 +32,7 @@ public class HomeFragment extends Fragment {
                 textView.setText(getString(R.string.text_home));
             }
         });*/
+
         return root;
     }
 }

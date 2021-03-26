@@ -15,5 +15,5 @@
     <string name="title_bt_scores">Scores</string>
     <string name="title_bt_newgame">New game</string>
     <string name="text_new_player">Add new player</string>
-
+    <string name="donate">Donate</string>
 </resources>

@@ -17,7 +17,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.a7wondersscoring.MainActivity;
 import com.example.a7wondersscoring.R;
 
-import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,28 +24,41 @@ import static com.example.a7wondersscoring.R.color.pagePlayersBackgroundEven;
 import static com.example.a7wondersscoring.R.color.pagePlayersBackgroundOdd;
 
 /**
- * [ ] Ajouter un bouton pour ajouter un nouveau joueur
- * [ ] Avoir un fichier de configuration pour enregistrer la liste des joueurs
+ * Page Players
+ * [x] Ajouter un bouton pour ajouter un nouveau joueur
+ * [x] Avoir un fichier de configuration pour enregistrer la liste des joueurs
  * [x] Charger automatiquement la liste des joueurs
+ * [ ] Style du bouton nouveau joueur
+ * [ ] Création page pour nouveau joueur
+ * [ ] Nouvelle page
+ * [ ] Faire le lien via le bouton
+ * [ ] Ajouter un champ texte
+ * [ ] Bouton valider
+ * [ ] Enregistrement du nom dans le fichier de config
+ * <p>
+ * All pages
  * [ ] Ajouter scrollbar sur toutes les pages
+ * [ ] Mettre à jour les thèmes
+ * <p>
+ * Page scores
+ * [ ] Fichier config pour une partie
+ * [ ] Afficher les résultats d'une partie
+ * <p>
+ * Configs
+ * [ ] Combiner les fichiers config
+ * <p>
+ * Page Home
+ * [ ] Mettre à jour la home page pour lien vers soutien
+ * <p>
+ * Page Config
+ * [ ] Ajouter une page de config
  */
 
 public class PlayersFragment extends Fragment {
 
     private PlayersViewModel playersViewModel;
     private List<String> lPlayers = loadPlayers();
-    private int nbMaxPlayers = 15;
-
-    public static int getResId(String resName, Class<?> c) {
-
-        try {
-            Field idField = c.getDeclaredField(resName);
-            return idField.getInt(idField);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return -1;
-        }
-    }
+    private int nbMaxPlayers = R.integer.nb_max_players;
 
     // Récupère le nom des joueurs via un fichier json
     private List<String> loadPlayers() {
@@ -81,11 +93,29 @@ public class PlayersFragment extends Fragment {
         // Pour chaque joueur
         for (int i = 0; i < lPlayers.size(); i++) {
             // On récupère le champ
-            TextView textViewPlayer = root.findViewById(getResId("text_player_" + i, R.id.class));
+            //TextView textViewPlayer = root.findViewById(MainActivity.getResId("text_player_" + i, R.id.class));
+
+            TextView textViewPlayer;
+            // Si c'est le premier joueur, on peut utiliser le champ disponible,
+            // Sinon, on doit générer un nouveau champ
+            if (i == 0)
+                textViewPlayer = root.findViewById(R.id.text_player);
+            else {
+                // Clone la vue actuelle
+                View v = inflater.inflate(R.layout.fragment_players, null);
+                // Récupère le champ texte à copier
+                textViewPlayer = (TextView) v.findViewById(R.id.text_player);
+                // Affecte un nouvelle id généré aléatoirement
+                textViewPlayer.setId(View.generateViewId());
+                // Récupère le groupe
+                ViewGroup insertPoint = (ViewGroup) root.findViewById(R.id.linear_players);
+                // Ajoute le nouveau champ au groupe
+                insertPoint.addView(v);
+            }
 
             // On le met en visible et on ajoute le nom du joueur dedans
             textViewPlayer.setVisibility(View.VISIBLE);
-            textViewPlayer.setText(i + " - " + lPlayers.get(i));
+            textViewPlayer.setText((i + 1) + " - " + lPlayers.get(i));
 
             // Fond alterné
             if (i % 2 == 0)
@@ -98,19 +128,21 @@ public class PlayersFragment extends Fragment {
             textViewPlayer.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             textViewPlayer.setTypeface(Typeface.DEFAULT_BOLD);
             textViewPlayer.setTextSize(22);
-            //textViewPlayer.setTextAppearance(R.style.TextAppearance_AppCompat_Large);
 
             // Margin & Taille
             ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) textViewPlayer.getLayoutParams();
             //params.height = dpToPx(50);
-            params.setMargins(8, 16, 8, 8);
+            //params.setMargins(8, 16, 8, 8);
             textViewPlayer.setLayoutParams(params);
         }
 
         // Limite le nombre max de joueurs (tant qu'on ne peut pas générer les champs via le code)
-        if (lPlayers.size() == nbMaxPlayers) {
+        if (lPlayers.size() < nbMaxPlayers) {
             Button btAddPlayer = root.findViewById(R.id.bt_new_player);
-            btAddPlayer.setVisibility(View.GONE);
+            btAddPlayer.setVisibility(View.VISIBLE);
+            //ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) btAddPlayer.getLayoutParams();
+            //layoutParams.bottomToTop = MainActivity.getResId("text_player_" + (lPlayers.size()-1), R.id.class);
+            //btAddPlayer.setLayoutParams(layoutParams);
         }
 
         return root;

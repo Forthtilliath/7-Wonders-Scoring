@@ -12,6 +12,8 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.lang.reflect.Field;
+
 public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("StaticFieldLeak")
@@ -20,6 +22,17 @@ public class MainActivity extends AppCompatActivity {
     // Permet de récupérer le context via d'autres classes
     public static Context getContext() {
         return context;
+    }
+
+    // Récupère l'id d'une ressource via son nom
+    public static int getResId(String resName, Class<?> c) {
+        try {
+            Field idField = c.getDeclaredField(resName);
+            return idField.getInt(idField);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
     }
 
     @Override
