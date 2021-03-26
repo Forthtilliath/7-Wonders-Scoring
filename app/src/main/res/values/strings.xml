@@ -7,6 +7,7 @@
     <string name="text_home_0">Welcome on 7 Wonders Scoring !</string>
     <string name="text_home_1">Image</string>
     <string name="text_home_2">7 Wonders Scoring will help you to calculate the score of each game, and will allow you to save them !</string>
+    <string name="text_home_3">Developed by Forth.</string>
     <string name="text_players">Players list</string>
     <string name="text_scores">Scores list</string>
     <string name="text_newgame">Launch a new game</string>

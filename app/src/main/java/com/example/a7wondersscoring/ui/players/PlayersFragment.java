@@ -54,6 +54,10 @@ import static com.example.a7wondersscoring.R.color.pagePlayersBackgroundOdd;
  * [ ] Ajouter une page de config
  */
 
+/**
+ * Texte justifié : https://www.youtube.com/watch?v=SCwA0mD6TvU
+ */
+
 public class PlayersFragment extends Fragment {
 
     private PlayersViewModel playersViewModel;
